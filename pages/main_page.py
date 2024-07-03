@@ -5,19 +5,19 @@ from selene import browser, by, have
 from selene.core.command import js
 from data.params_for_searching_hotel import Search
 
-search=Search('Санкт-Петербург', 'Март', 2, 4, 2, 'Работа')
+search=Search('Saint Petersburg', 'Март', 2, 4, 2, 'Работа')
 class SearchHotels:
     def __init__(self):
         pass
 
     def choose_destination(self, destination: str = search.destination):
         with allure.step("choose destination"):
-            browser.element(".Input-module__control--tqFEn").type(destination)
-            browser.all(".Suggest-module__destinationTitle--FrP_e").element_by(
-                have.exact_text(
-                    "Санкт-Петербург, Северо-Западный федеральный округ, Россия"
-             )
-         ).click()
+            browser.element(".Input-module__control--tqFEn").type(destination).press_enter()
+         #    browser.all(".Suggest-module__destinationTitle--FrP_e").element_by(
+         #        have.exact_text(
+         #            "Saint Petersburg-"
+         #     )
+         # ).click()
         # browser.all(
         #     "[class=Popup-module__popup--1hfCp .Suggest-module__region--1KGe9]").element('title="Санкт-Петербург-Главный, Россия"').click()
 

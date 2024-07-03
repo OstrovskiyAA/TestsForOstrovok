@@ -40,8 +40,8 @@ def open_selenoid(request):
         command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
-    browser = Browser(Config(driver))
-    browser.open('https://ostrovok.ru/')
+    browser.config.driver = driver
+    browser.open('https://ostrovok.ru/?sid=37fae01f-74d7-45e7-a55a-1d53b10e09ea')
     yield browser
     attach.add_html(browser)
     attach.add_logs(browser)
