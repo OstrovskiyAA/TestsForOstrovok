@@ -1,5 +1,5 @@
 import pytest
-from selene import browser
+from selene import browser, Browser, Config
 from selenium import webdriver
 import allure
 import os
@@ -40,8 +40,8 @@ def open_selenoid(request):
         command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
-    browser.config.driver = driver
-    browser.open('https://ostrovok.ru/')
+    browser = Browser(Config(driver))
+    browser.open('ostrr')
     yield browser
     attach.add_html(browser)
     attach.add_logs(browser)
