@@ -12,7 +12,9 @@ class SearchHotels:
 
     def choose_destination(self, destination: str = search.destination):
         with allure.step("choose destination"):
-            browser.element(".Input-module__control--tqFEn").type(destination).press_enter()
+            browser.all(".Input-module__control--tqFEn")[0].click()
+            browser.all(".Suggest-module__destinationTitle--FrP_e").element_by(
+                have.text("Saint Petersburg")).click()
 
     def choose_dates(
         self, month: str = search.month, date_of_start: int = search.date_of_start, date_of_finish: int = search.date_of_finish
@@ -55,5 +57,5 @@ class SearchHotels:
     def should_have_wroten_text(self):
         with allure.step('Assertion'):
             browser.element('.zenregioninfo-dates').should(have.exact_text(
-                f'{search.date_of_start} {search.month[:3].lower()} 2025 — {search.date_of_finish} {search.month[:3].lower()} 2025'))
+                f'{search.date_of_start} {search.month[:3]} 2025 — {search.date_of_finish} {search.month[:3]} 2025'))
             browser.element('.zenregioninfo-region').should(have.text(f'{search.destination}'))
