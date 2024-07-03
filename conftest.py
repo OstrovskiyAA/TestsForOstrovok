@@ -33,15 +33,15 @@ def open_selenoid(request):
         }
     }
     options.capabilities.update(selenoid_capabilities)
-    login = os.getenv('LOGIN')
-    password = os.getenv('PASSWORD')
+    # login = os.getenv('LOGIN')
+    # password = os.getenv('PASSWORD')
     driver = webdriver.Remote(
         # command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
     )
     browser = Browser(Config(driver))
-    browser.open('ostrr')
+    browser.open('https://ostrovok.ru/')
     yield browser
     attach.add_html(browser)
     attach.add_logs(browser)
