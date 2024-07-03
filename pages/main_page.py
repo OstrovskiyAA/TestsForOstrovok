@@ -5,7 +5,7 @@ from selene import browser, by, have
 from selene.core.command import js
 from data.params_for_searching_hotel import Search
 
-search=Search('Saint Petersburg', 'Март', 2, 4, 2, 'Работа')
+search=Search('Saint Petersburg', 'March', 2, 4, 2, 'Business')
 class SearchHotels:
     def __init__(self):
         pass
@@ -13,13 +13,6 @@ class SearchHotels:
     def choose_destination(self, destination: str = search.destination):
         with allure.step("choose destination"):
             browser.element(".Input-module__control--tqFEn").type(destination).press_enter()
-         #    browser.all(".Suggest-module__destinationTitle--FrP_e").element_by(
-         #        have.exact_text(
-         #            "Saint Petersburg-"
-         #     )
-         # ).click()
-        # browser.all(
-        #     "[class=Popup-module__popup--1hfCp .Suggest-module__region--1KGe9]").element('title="Санкт-Петербург-Главный, Россия"').click()
 
     def choose_dates(
         self, month: str = search.month, date_of_start: int = search.date_of_start, date_of_finish: int = search.date_of_finish
