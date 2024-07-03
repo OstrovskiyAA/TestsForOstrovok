@@ -5,7 +5,7 @@ import allure
 import os
 from selenium.webdriver.chrome.options import Options
 from utils import attach
-
+from dotenv import dotenv_values, load_dotenv
 # Без селиноида, локально:
 # @pytest.fixture(scope="function")
 # def open_browser():
@@ -18,6 +18,9 @@ from utils import attach
 #     attach.add_screenshot(browser)
 #     browser.quit()
 
+@pytest.fixture(scope="session", autouse=True)
+def load_env():
+    load_dotenv()
 @pytest.fixture(scope="function")
 def open_selenoid(request):
     options = Options()
