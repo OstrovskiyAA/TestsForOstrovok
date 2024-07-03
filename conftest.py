@@ -26,7 +26,7 @@ def open_selenoid(request):
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": "100",
+        "browserVersion": "100.0",
         "selenoid:options": {
             "enableVideo": True,
             "enableVNC": True
